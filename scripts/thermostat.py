@@ -1,10 +1,12 @@
 import paho.mqtt.client as mqtt
-
-topics = [("haus/raum1/thermostat", 0), ("haus/raum2/thermostat", 0), ("haus/raum3/thermostat", 0)]
+import sys
 
 client = mqtt.Client()
 client.connect("127.0.0.1", 1883, 60)
-client.subscribe(topics)
+
+raum = sys.argv[1]
+topic = (f"haus/raum{raum}/thermostat", 0)
+client.subscribe(topic)
 
 def on_message(client, userdata, msg):
     befehl = msg.payload.decode()
@@ -15,6 +17,6 @@ def on_message(client, userdata, msg):
     elif befehl == "heizung_runter":
         print(f"Heizung wird in {raum} runtergedreht")
     print("\n")
-
+    
 client.on_message = on_message
 client.loop_forever()

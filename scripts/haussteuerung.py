@@ -4,7 +4,7 @@ import logging
 SCHWELLWERT_UNTEN = 18.0
 SCHWELLWERT_OBEN = 22.0
 
-topics = [("haus/raum1/temperatur", 0), ("haus/raum2/temperatur", 0), ("haus/raum3/temperatur", 0)]
+topics = [("haus/raum1/temperatur", 0), ("haus/raum2/temperatur", 0)]
 
 logging.basicConfig(
     filename="haussteuerung.log", level=logging.INFO, filemode="w", encoding='utf-8',
