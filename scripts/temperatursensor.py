@@ -13,7 +13,7 @@ def start_client(raum):
 
     while True:
         temperatur = round(random.uniform(15, 25), 2)
-        client.publish(topic, temperatur)
+        client.publish(topic, temperatur, 0, True)
         print(f"Temperatur gesendet: {topic}: {temperatur} \n")
         time.sleep(5)
 

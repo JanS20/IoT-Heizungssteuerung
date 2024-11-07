@@ -24,12 +24,12 @@ def on_message(client, userdata, msg):
     if temperatur < SCHWELLWERT_UNTEN:
         action = "heizung_hoch"
         print("Temperatur zu niedrig")
-        client.publish(f"haus/{raum}/thermostat", action)
+        client.publish(f"haus/{raum}/thermostat", action, 0, True)
         logging.info(f"Veröffentlichte Nachricht an haus/{raum}/thermostat: {action}")
     elif temperatur > SCHWELLWERT_OBEN:
         action = "heizung_runter"
         print("Temperatur zu hoch")
-        client.publish(f"haus/{raum}/thermostat", action)
+        client.publish(f"haus/{raum}/thermostat", action, 0, True)
         logging.info(f"Veröffentlichte Nachricht an haus/{raum}/thermostat: {action}")
     print("\n")
         
